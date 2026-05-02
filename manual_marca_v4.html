@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Identidad Visual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ─── RESET ─── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* ─── TOKENS ─── */
+  :root {
+    --violet-deep:   #2D0A6E;
+    --violet-dark:   #1C0647;
+    --violet-mid:    #7B3FE4;
+    --violet-bright: #A96EFF;
+    --violet-soft:   #F0EBFF;
+    --yellow-pastel: #FFF0A0;
+    --yellow-warm:   #FFFAD0;
+    --yellow-text:   #5C4200;
+    --coral:         #FF6B5B;
+    --coral-light:   #FFE4E0;
+    --coral-text:    #5C0A00;
+    --cream:         #FDFAF4;
+    --cream-border:  rgba(123,63,228,0.15);
+    --text-dark:     #1A0A38;
+    --text-mid:      #5C3D99;
+    --text-light:    #FDFAF4;
+    --text-muted:    #A96EFF;
+
+    --font-display: 'Syne', sans-serif;
+    --font-body:    'Nunito', sans-serif;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-pill: 999px;
+
+    --gap: 3px;
+    --pad: 1.8rem;
+  }
+
+  /* ─── BASE ─── */
+  body {
+    font-family: var(--font-body);
+    background: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem 1rem;
+  }
+
+  .manual {
+    width: 100%;
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+  }
+
+  /* ─── SECTIONS ─── */
+  .sec {
+    padding: var(--pad);
+    border-radius: var(--radius-lg);
+  }
+
+  .sec-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .sec-h {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+  }
+
+  /* ─── UTILITIES ─── */
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 9px;
+    border-radius: var(--radius-pill);
+  }
+
+  .card-dark {
+    background: var(--violet-dark);
+    border-radius: var(--radius-md);
+    padding: 14px;
+  }
+
+  .card-light {
+    background: #fff;
+    border-radius: var(--radius-md);
+    padding: 14px;
+    border: 0.5px solid var(--cream-border);
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .grid-5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  .label-sm {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .note-box {
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    border-left: 3px solid var(--violet-mid);
+    padding: 12px 14px;
+  }
+
+  /* ─── ACCENT RULE ─── */
+  .border-accent-left {
+    border-left: 2px solid;
+    padding-left: 10px;
+  }
+
+  /* ─── RULE CARD ─── */
+  .rule-card {
+    background: var(--violet-dark);
+    border-radius: var(--radius-md);
+    padding: 12px;
+  }
+
+  .rule-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-bottom: 8px;
+  }
+
+  /* ─── STEP CIRCLE ─── */
+  .step-circle {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    body { background: white; padding: 0; }
+    .manual { max-width: 100%; }
+  }
+
+  @media (max-width: 520px) {
+    .grid-5 { grid-template-columns: repeat(3, 1fr); }
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="manual">
+
+  <!-- ══════════════════════════════════
+       HEADER
+  ══════════════════════════════════ -->
+  <div class="sec" style="background: var(--violet-deep);">
+    <span class="sec-tag" style="color: var(--violet-bright);">Manual de identidad visual</span>
+    <p style="font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--text-light); line-height: 1.2; margin-bottom: 8px;">
+      Tu marca personal<br>en 5 secciones
+    </p>
+    <p style="font-size: 13px; color: var(--violet-mid); font-family: var(--font-body);">
+      CRO · SEO · Marketing digital
+    </p>
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       01 PALETA
+  ══════════════════════════════════ -->
+  <div class="sec" style="background: #f9f9f9;">
+    <span class="sec-tag" style="color: #888;">01 — Paleta de colores</span>
+
+    <!-- Swatches -->
+    <div class="grid-5" style="height: 96px; margin-bottom: 16px;">
+
+      <div style="background: var(--violet-mid); border-radius: var(--radius-sm); display: flex; flex-direction: column; justify-content: flex-end; padding: 8px;">
+        <p style="font-size: 11px; font-weight: 600; color: #EFE0FF; margin: 0; font-family: var(--font-body);">Violeta vivo</p>
+        <p style="font-size: 10px; color: #C9A0FF; margin: 0;">#7B3FE4</p>
+      </div>
+
+      <div style="background: var(--yellow-pastel); border-radius: var(--radius-sm); border: 0.5px solid rgba(180,140,0,0.2); display: flex; flex-direction: column; justify-content: flex-end; padding: 8px;">
+        <p style="font-size: 11px; font-weight: 600; color: var(--yellow-text); margin: 0;">Limón pastel</p>
+        <p style="font-size: 10px; color: #8A6400; margin: 0;">#FFF0A0</p>
+      </div>
+
+      <div style="background: var(--coral); border-radius: var(--radius-sm); display: flex; flex-direction: column; justify-content: flex-end; padding: 8px;">
+        <p style="font-size: 11px; font-weight: 600; color: #2A0500; margin: 0;">Coral vivo</p>
+        <p style="font-size: 10px; color: #4A0800; margin: 0;">#FF6B5B</p>
+      </div>
+
+      <div style="background: var(--violet-deep); border-radius: var(--radius-sm); display: flex; flex-direction: column; justify-content: flex-end; padding: 8px;">
+        <p style="font-size: 11px; font-weight: 600; color: var(--violet-bright); margin: 0;">Noche violeta</p>
+        <p style="font-size: 10px; color: var(--violet-mid); margin: 0;">#2D0A6E</p>
+      </div>
+
+      <div style="background: var(--cream); border-radius: var(--radius-sm); border: 0.5px solid var(--cream-border); display: flex; flex-direction: column; justify-content: flex-end; padding: 8px;">
+        <p style="font-size: 11px; font-weight: 600; color: var(--text-dark); margin: 0;">Crema</p>
+        <p style="font-size: 10px; color: var(--text-mid); margin: 0;">#FDFAF4</p>
+      </div>
+
+    </div>
+
+    <!-- Proporción -->
+    <p class="label-sm" style="color: #888; margin-bottom: 8px;">Proporciones de uso</p>
+    <div style="border-radius: var(--radius-sm); overflow: hidden; height: 32px; display: flex; margin-bottom: 10px;">
+      <div style="background: var(--violet-deep); flex: 0 0 40%; display: flex; align-items: center; justify-content: center;">
+        <span style="font-size: 10px; color: var(--violet-bright); font-weight: 600;">40% Noche violeta</span>
+      </div>
+      <div style="background: var(--violet-mid); flex: 0 0 25%; display: flex; align-items: center; justify-content: center;">
+        <span style="font-size: 10px; color: #EFE0FF; font-weight: 600;">25% Violeta</span>
+      </div>
+      <div style="background: var(--yellow-pastel); flex: 0 0 20%; display: flex; align-items: center; justify-content: center;">
+        <span style="font-size: 10px; color: var(--yellow-text); font-weight: 600;">20% Limón</span>
+      </div>
+      <div style="background: var(--coral); flex: 0 0 15%; display: flex; align-items: center; justify-content: center;">
+        <span style="font-size: 10px; color: #2A0500; font-weight: 600;">15% Coral</span>
+      </div>
+    </div>
+
+    <div class="note-box" style="background: var(--violet-soft);">
+      <p style="font-size: 11px; color: var(--text-dark); line-height: 1.7;">
+        El <strong>amarillo limón pastel</strong> actúa como luz — ilumina sin gritar. El <strong>coral</strong> es el punto de tensión visual. El violeta es la personalidad. Esta combinación no existe en ninguna otra marca de marketing digital.
+      </p>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       02 MODO OSCURO
+  ══════════════════════════════════ -->
+  <div class="sec" style="background: var(--violet-deep);">
+    <span class="sec-tag" style="color: var(--violet-mid);">02 — Modo oscuro (versión principal)</span>
+    <p class="sec-h" style="color: var(--text-light);">Así se ve tu marca en oscuro</p>
+
+    <div class="grid-2" style="margin-bottom: 14px;">
+
+      <!-- Card ebook -->
+      <div class="card-dark">
+        <span class="badge" style="background: var(--coral); color: #2A0500; display: inline-block; margin-bottom: 10px;">Nuevo ebook</span>
+        <p style="font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--text-light); margin-bottom: 4px; line-height: 1.3;">
+          Duplica tus conversiones en 30 días
+        </p>
+        <p style="font-size: 11px; color: var(--violet-bright); margin-bottom: 12px;">Guía de CRO para negocios digitales</p>
+        <div style="background: var(--yellow-pastel); border-radius: var(--radius-sm); padding: 7px 12px; display: inline-block;">
+          <span style="font-size: 11px; font-weight: 700; color: var(--violet-deep);">Descargar gratis</span>
+        </div>
+      </div>
+
+      <!-- Card métricas -->
+      <div class="card-dark" style="display: flex; flex-direction: column; gap: 10px;">
+        <div class="border-accent-left" style="border-color: var(--coral);">
+          <p style="font-size: 12px; font-weight: 600; color: var(--text-light); margin-bottom: 2px;">+340% tráfico orgánico</p>
+          <p style="font-size: 10px; color: var(--violet-bright);">Cliente e-commerce · 6 meses</p>
+        </div>
+        <div class="border-accent-left" style="border-color: var(--yellow-pastel);">
+          <p style="font-size: 12px; font-weight: 600; color: var(--text-light); margin-bottom: 2px;">+28% tasa de conversión</p>
+          <p style="font-size: 10px; color: var(--violet-bright);">SaaS B2B · Auditoría CRO</p>
+        </div>
+        <div class="border-accent-left" style="border-color: var(--coral);">
+          <p style="font-size: 12px; font-weight: 600; color: var(--text-light); margin-bottom: 2px;">Pos. 1 en 14 keywords</p>
+          <p style="font-size: 10px; color: var(--violet-bright);">Clínica dental · SEO local</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Pilares -->
+    <div class="grid-3">
+      <div class="card-dark" style="text-align: center;">
+        <p style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--violet-bright); margin-bottom: 2px;">SEO</p>
+        <p style="font-size: 10px; color: var(--violet-mid);">Posicionamiento orgánico</p>
+      </div>
+      <div class="card-dark" style="text-align: center;">
+        <p style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--coral); margin-bottom: 2px;">CRO</p>
+        <p style="font-size: 10px; color: var(--violet-mid);">Optimización de conversión</p>
+      </div>
+      <div style="background: var(--yellow-pastel); border-radius: var(--radius-md); padding: 12px; text-align: center;">
+        <p style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--violet-deep); margin-bottom: 2px;">Data</p>
+        <p style="font-size: 10px; color: var(--yellow-text);">Decisiones con métricas</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       03 MODO CLARO
+  ══════════════════════════════════ -->
+  <div class="sec" style="background: var(--cream);">
+    <span class="sec-tag" style="color: var(--text-mid);">03 — Modo claro (documentos y ebooks)</span>
+    <p class="sec-h" style="color: var(--text-dark);">Así se ve tu marca en claro</p>
+
+    <div class="grid-2" style="margin-bottom: 14px;">
+
+      <!-- Card servicio -->
+      <div class="card-light">
+        <div style="height: 3px; background: var(--violet-mid); border-radius: 2px; margin-bottom: 12px;"></div>
+        <p style="font-family: var(--font-display); font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; line-height: 1.3;">
+          Auditoría SEO completa para tu web
+        </p>
+        <p style="font-size: 11px; color: var(--text-mid); margin-bottom: 10px;">
+          Detecta lo que está frenando tu tráfico orgánico
+        </p>
+        <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+          <span class="badge" style="background: var(--violet-soft); color: var(--violet-deep);">Técnico</span>
+          <span class="badge" style="background: var(--coral-light); color: var(--coral-text);">On-page</span>
+          <span class="badge" style="background: var(--yellow-warm); color: var(--yellow-text);">Autoridad</span>
+        </div>
+      </div>
+
+      <!-- Card proceso -->
+      <div class="card-light">
+        <p class="label-sm" style="color: var(--text-mid); margin-bottom: 10px;">Proceso de trabajo</p>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div class="step-circle" style="background: var(--violet-mid); color: #fff;">1</div>
+            <p style="font-size: 11px; color: var(--text-dark); margin: 0;">Diagnóstico y auditoría inicial</p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div class="step-circle" style="background: var(--coral); color: #fff;">2</div>
+            <p style="font-size: 11px; color: var(--text-dark); margin: 0;">Estrategia personalizada</p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div class="step-circle" style="background: var(--yellow-text); color: var(--yellow-pastel);">3</div>
+            <p style="font-size: 11px; color: var(--text-dark); margin: 0;">Implementación y seguimiento</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note-box" style="background: var(--violet-soft);">
+      <p style="font-size: 12px; color: var(--text-dark); line-height: 1.7;">
+        En modo claro el violeta brillante <strong>#7B3FE4</strong> solo se usa como acento gráfico (líneas, iconos). El subtexto usa <strong>#5C3D99</strong> — ratio de contraste 5.8:1, pasa WCAG AA sin problema.
+      </p>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       04 TIPOGRAFÍA
+  ══════════════════════════════════ -->
+  <div class="sec" style="background: #f9f9f9;">
+    <span class="sec-tag" style="color: #888;">04 — Tipografía</span>
+
+    <div class="grid-2" style="margin-bottom: 14px;">
+
+      <!-- Syne -->
+      <div style="background: #fff; border-radius: var(--radius-md); padding: 14px; border: 0.5px solid #e0e0e0;">
+        <p class="label-sm" style="color: #888; margin-bottom: 8px;">Display / Títulos</p>
+        <p style="font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--text-dark); line-height: 1; margin-bottom: 6px;">Syne</p>
+        <p style="font-size: 11px; color: #888; margin-bottom: 10px; line-height: 1.5;">Geométrica · moderna · sin serif<br>Google Fonts — gratuita</p>
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <p style="font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text-dark); margin: 0;">H1 — 32–48px · 700</p>
+          <p style="font-family: var(--font-display); font-size: 14px; font-weight: 500; color: #555; margin: 0;">H2 — 22–28px · 600</p>
+          <p style="font-family: var(--font-display); font-size: 12px; color: #888; margin: 0;">H3 — 16–18px · 500</p>
+        </div>
+      </div>
+
+      <!-- Nunito -->
+      <div style="background: #fff; border-radius: var(--radius-md); padding: 14px; border: 0.5px solid #e0e0e0;">
+        <p class="label-sm" style="color: #888; margin-bottom: 8px;">Cuerpo / Interfaz</p>
+        <p style="font-family: var(--font-body); font-size: 26px; font-weight: 400; color: var(--text-dark); line-height: 1; margin-bottom: 6px;">Nunito</p>
+        <p style="font-size: 11px; color: #888; margin-bottom: 10px; line-height: 1.5;">Redondeada · cálida · muy legible<br>Google Fonts — gratuita</p>
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <p style="font-family: var(--font-body); font-size: 14px; font-weight: 400; color: var(--text-dark); margin: 0;">Cuerpo — 15–16px · 400</p>
+          <p style="font-family: var(--font-body); font-size: 12px; font-weight: 400; color: #555; margin: 0;">Caption — 12–13px · 400</p>
+          <p style="font-family: var(--font-body); font-size: 11px; color: #888; margin: 0; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600;">Label — 10–11px · 600</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Jerarquía en acción -->
+    <div style="background: #fff; border-radius: var(--radius-md); padding: 16px; border: 0.5px solid #e0e0e0;">
+      <p class="label-sm" style="color: #888; margin-bottom: 12px;">Jerarquía en acción</p>
+
+      <div style="border-left: 3px solid var(--coral); padding-left: 14px; margin-bottom: 12px;">
+        <p style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text-dark); line-height: 1.2; margin-bottom: 4px;">
+          Más tráfico. Más ventas.<br>Menos conjeturas.
+        </p>
+        <p style="font-family: var(--font-body); font-size: 12px; color: var(--text-mid);">Syne 700 · H1 en modo claro</p>
+      </div>
+
+      <p style="font-family: var(--font-body); font-size: 13px; color: #444; line-height: 1.8; margin-bottom: 10px;">
+        Ayudo a negocios digitales a crecer de forma sostenible usando SEO técnico y CRO basado en datos. Sin humo, sin promesas vacías.
+        <span style="color: var(--violet-deep); font-weight: 700; background: var(--yellow-pastel); padding: 1px 7px; border-radius: 4px;">Solo resultados medibles.</span>
+      </p>
+
+      <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+        <span class="badge" style="background: var(--violet-soft); color: var(--violet-deep);">Nunito · cuerpo 400</span>
+        <span class="badge" style="background: var(--coral-light); color: var(--coral-text);">Acento coral</span>
+        <span class="badge" style="background: var(--yellow-warm); color: var(--yellow-text);">Highlight amarillo</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════
+       05 REGLAS DE ORO
+  ══════════════════════════════════ -->
+  <div class="sec" style="background: var(--violet-deep);">
+    <span class="sec-tag" style="color: var(--violet-mid);">05 — Reglas de oro</span>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+
+      <div class="rule-card">
+        <div class="rule-dot" style="background: var(--violet-bright);"></div>
+        <p style="font-size: 12px; font-weight: 600; color: var(--text-light); margin-bottom: 4px;">Violeta brillante solo sobre oscuro</p>
+        <p style="font-size: 11px; color: var(--violet-mid);">Sobre fondos claros usa #5C3D99 — contraste 5.8:1</p>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-dot" style="background: var(--coral);"></div>
+        <p style="font-size: 12px; font-weight: 600; color: var(--text-light); margin-bottom: 4px;">Coral máximo 15%</p>
+        <p style="font-size: 11px; color: var(--violet-mid);">Bullets, badges, líneas, métricas clave — tensión, no protagonismo</p>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-dot" style="background: var(--yellow-pastel);"></div>
+        <p style="font-size: 12px; font-weight: 600; color: var(--text-light); margin-bottom: 4px;">Amarillo = luz, no fondo</p>
+        <p style="font-size: 11px; color: var(--violet-mid);">Úsalo en highlights de texto y CTAs sobre oscuro, nunca como fondo de sección</p>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-dot" style="background: var(--violet-bright);"></div>
+        <p style="font-size: 12px; font-weight: 600; color: var(--text-light); margin-bottom: 4px;">Syne títulos · Nunito todo lo demás</p>
+        <p style="font-size: 11px; color: var(--violet-mid);">Geométrico + redondeado — contraste tipográfico con personalidad</p>
+      </div>
+
+      <div class="rule-card" style="grid-column: 1 / -1;">
+        <div class="rule-dot" style="background: var(--coral);"></div>
+        <p style="font-size: 12px; font-weight: 600; color: var(--text-light); margin-bottom: 4px;">Web y redes = modo oscuro · Ebooks y docs = modo claro</p>
+        <p style="font-size: 11px; color: var(--violet-mid);">El violeta oscuro proyecta autoridad poco común en el sector. El crema facilita la lectura prolongada en documentos largos.</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

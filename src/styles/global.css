@@ -1,0 +1,439 @@
+/* ===========================
+   TOKENS DE MARCA
+   Basado en Manual de Identidad Visual v4
+=========================== */
+:root {
+  /* — Paleta principal — */
+  --violet-deep:   #2D0A6E;   /* 40% — fondo principal web */
+  --violet-dark:   #1C0647;   /* fondos de cards en modo oscuro */
+  --violet-mid:    #7B3FE4;   /* 25% — acento principal */
+  --violet-bright: #A96EFF;   /* textos sobre oscuro */
+  --violet-soft:   #F0EBFF;   /* badges y fondos suaves */
+
+  --yellow-pastel: #FFF0A0;   /* 20% — luz, CTAs, highlights */
+  --yellow-warm:   #FFFAD0;   /* badges claros */
+  --yellow-text:   #5C4200;   /* texto sobre amarillo */
+
+  --coral:         #FF6B5B;   /* 15% — tensión visual, bullets, métricas */
+  --coral-light:   #FFE4E0;   /* badges claros coral */
+  --coral-text:    #5C0A00;   /* texto sobre coral claro */
+
+  --cream:         #FDFAF4;   /* modo claro — docs y ebooks */
+  --cream-border:  rgba(123,63,228,0.15);
+
+  --text-dark:     #1A0A38;   /* texto sobre fondos claros */
+  --text-mid:      #5C3D99;   /* subtexto modo claro — contraste 5.8:1 */
+  --text-light:    #FDFAF4;   /* texto sobre fondos oscuros */
+  --text-muted:    #A96EFF;   /* texto secundario sobre oscuro */
+
+  /* — Tipografía — */
+  --font-display: 'Syne', sans-serif;    /* títulos: geométrica, moderna */
+  --font-body:    'Nunito', sans-serif;  /* cuerpo: redondeada, cálida */
+
+  /* — Radios — */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-pill: 999px;
+
+  /* — Espaciado — */
+  --pad: 1.8rem;
+  --gap: 3px;
+}
+
+/* ===========================
+   Reset & Base
+=========================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-body);
+  font-size: 16px;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Web = modo oscuro (regla de oro del manual) */
+body {
+  overflow-x: hidden;
+  background-color: var(--violet-deep);
+  background-image: 
+    radial-gradient(circle at top left, rgba(123, 63, 228, 0.25) 0%, transparent 40%),
+    radial-gradient(circle at center right, rgba(255, 107, 91, 0.1) 0%, transparent 50%),
+    linear-gradient(to bottom, var(--violet-deep) 0%, var(--violet-dark) 100%);
+  background-attachment: fixed;
+  color: var(--text-light);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===========================
+   Tipografía
+   Syne para títulos · Nunito para todo lo demás
+=========================== */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--text-light);
+  line-height: 1.2;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3rem);  font-weight: 700; }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; }
+h3 { font-size: 1.2rem; font-weight: 500; }
+
+p {
+  font-family: var(--font-body);
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+a {
+  color: var(--violet-bright);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover { color: var(--yellow-pastel); }
+
+/* ===========================
+   Layout
+=========================== */
+main {
+  flex: 1;
+  width: 100%;
+}
+
+/* ===========================
+   Navbar Moderna Flotante
+=========================== */
+/* Visibilidad por dispositivo */
+.mobile-only { display: none !important; }
+.desktop-only { display: flex !important; }
+
+@media (max-width: 768px) {
+  .mobile-only { display: flex !important; }
+  .desktop-only { display: none !important; }
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Navbar Moderna */
+.modern-nav {
+  position: fixed;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 3rem);
+  max-width: 1000px;
+  background: rgba(28, 6, 71, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(169, 110, 255, 0.2);
+  border-radius: var(--radius-pill);
+  z-index: 1000;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.modern-nav nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 1.2rem;
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-light) !important;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+}
+
+.nav-logo:hover {
+  color: var(--yellow-pastel) !important;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  color: var(--violet-soft);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--yellow-pastel);
+}
+
+.nav-cta {
+  font-size: 0.85rem !important;
+  padding: 0.6rem 1.4rem !important;
+}
+
+/* Botón Hamburguesa */
+.menu-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-light);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Menú Móvil Premium Refinado */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100vw;
+  width: 100vw;
+  height: 100vh;
+  background: transparent; /* Eliminado el fondo del overlay para total transparencia */
+  z-index: 2000;
+  transition: right 0.5s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+.mobile-menu.open {
+  right: 0;
+}
+
+.mobile-menu-content {
+  width: 85%;
+  max-width: 340px;
+  height: 100%;
+  /* Degradado mucho más transparente para lucir el blur */
+  background: linear-gradient(135deg, rgba(45, 10, 110, 0.6) 0%, rgba(28, 6, 71, 0.8) 100%);
+  backdrop-filter: blur(30px); /* Aumentado el blur para compensar la falta de overlay */
+  -webkit-backdrop-filter: blur(30px);
+  margin-left: auto;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: -10px 0 40px rgba(0,0,0,0.3);
+}
+
+.mobile-menu-header {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Centra el logo */
+  position: relative;
+  margin-bottom: 3.5rem;
+}
+
+.mobile-logo {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-light);
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+.close-menu {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex-grow: 1;
+  align-items: center; /* Centrado horizontal de items flex */
+  justify-content: center; /* Centrado vertical opcional si hay espacio */
+}
+
+.mobile-links a {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-light);
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(20px); /* Cambiado de X a Y para un centrado más natural */
+  transition: all 0.4s ease;
+  transition-delay: calc(0.08s * var(--i));
+  text-align: center;
+}
+
+.mobile-menu.open .mobile-links a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-links a:hover {
+  color: var(--yellow-pastel);
+}
+
+.mobile-cta {
+  margin-top: 1rem;
+  font-size: 0.95rem !important;
+  color: var(--violet-deep) !important;
+  padding: 1rem 2rem !important;
+  font-weight: 800;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.4s ease;
+  transition-delay: 0.4s;
+  width: auto; /* Evita que ocupe todo el ancho si queremos centrado */
+  min-width: 200px;
+}
+
+.mobile-menu.open .mobile-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-menu-footer {
+  margin-top: auto;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(169, 110, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.footer-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--violet-bright);
+  margin-bottom: 1.2rem;
+  opacity: 1; /* Opacidad total para visibilidad */
+  text-align: center;
+}
+
+.mobile-socials {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.mobile-socials a {
+  color: var(--text-light); /* Blanco suave */
+  opacity: 0.9;
+  transition: all 0.2s ease;
+}
+
+.mobile-socials a:hover {
+  opacity: 1;
+  color: var(--yellow-pastel);
+  transform: scale(1.1);
+}
+
+/* Re-ajuste de Navbar en móvil */
+@media (max-width: 768px) {
+  .modern-nav {
+    top: 1rem;
+    width: calc(100% - 2rem);
+    border-radius: var(--radius-lg);
+  }
+}
+
+/* ===========================
+   Footer
+=========================== */
+footer {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  color: var(--violet-mid);
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(123, 63, 228, 0.2);
+  font-family: var(--font-body);
+}
+
+/* ===========================
+   Componentes base
+=========================== */
+
+/* Badge — igual al manual */
+.badge {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.05em;
+}
+
+.badge-violet  { background: var(--violet-soft);  color: var(--violet-deep); }
+.badge-coral   { background: var(--coral);         color: #2A0500; }
+.badge-yellow  { background: var(--yellow-pastel); color: var(--yellow-text); }
+
+/* Card oscura */
+.card-dark {
+  background: var(--violet-dark);
+  border-radius: var(--radius-md);
+  padding: 1.4rem;
+}
+
+/* CTA principal — amarillo sobre oscuro */
+.btn-primary {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  background: var(--yellow-pastel);
+  color: var(--violet-deep);
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-pill);
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 240, 160, 0.25);
+  color: var(--violet-deep);
+}
+
+/* Acento coral — para bullets y líneas */
+.accent-coral { color: var(--coral); }
+.accent-yellow { color: var(--yellow-pastel); }
+
+/* Highlight de texto amarillo */
+.highlight {
+  background: var(--yellow-pastel);
+  color: var(--violet-deep);
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 4px;
+}

@@ -1,0 +1,133 @@
+---
+// FinalCTA.astro — Última oportunidad para descargar
+---
+
+<section class="final-cta">
+  <div class="cta-container">
+    <div class="cta-content">
+      <h2 class="title">¿Listo para transformar tu WhatsApp en una máquina de ventas?</h2>
+      <p class="subtitle">Descarga la guía gratuita ahora y empieza a aplicar el sistema hoy mismo. Sin pasos complicados, solo resultados.</p>
+      
+      <div class="action-box">
+        <a href="#" class="btn-primary">Descargar guía gratis →</a>
+        <p class="trust-text">Únete a +1,000 dueños de tiendas que ya lo están usando.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .final-cta {
+    padding: 6rem 1.5rem 10rem 1.5rem;
+    background: var(--violet-deep);
+    display: flex;
+    justify-content: center;
+  }
+
+  .cta-container {
+    max-width: 1000px;
+    width: 100%;
+    background: linear-gradient(135deg, var(--violet-dark) 0%, #2D0A6E 100%);
+    border: 1px solid rgba(169, 110, 255, 0.2);
+    border-radius: var(--radius-lg);
+    padding: 5rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.4);
+  }
+
+  /* Efectos de luz de fondo */
+  .cta-container::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 107, 91, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-container::after {
+    content: '';
+    position: absolute;
+    bottom: -20%;
+    left: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 240, 160, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--text-light);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .subtitle {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--violet-bright);
+    line-height: 1.7;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+  }
+
+  .action-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--yellow-pastel);
+    color: var(--violet-deep);
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    font-weight: 800;
+    padding: 1.2rem 2.8rem;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(255, 240, 160, 0.2);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 20px 50px rgba(255, 240, 160, 0.3);
+    color: var(--violet-deep);
+  }
+
+  .trust-text {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--violet-mid);
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .cta-container {
+      padding: 4rem 1.5rem;
+    }
+    
+    .btn-primary {
+      width: 100%;
+      text-align: center;
+      padding: 1.2rem 1.5rem;
+    }
+  }
+</style>

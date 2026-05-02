@@ -1,0 +1,480 @@
+---
+// Signals.astro — Sección Interactiva (Tabs / Accordion)
+const signals = [
+  { 
+    num: "01", 
+    title: "Perfil de WhatsApp Business incompleto", 
+    desc: "Un perfil sin foto ni catálogo estructurado puede costarte hasta el 30% de conversiones antes de que el cliente siquiera escriba su primer mensaje. La fricción inicial mata el deseo de compra.",
+    action: "Configura tu catálogo nativo hoy mismo, añade un mensaje de bienvenida cálido y pon una foto o logo profesional que genere confianza inmediata."
+  },
+  { 
+    num: "02", 
+    title: "Mezclas ventas, soporte y vida personal", 
+    desc: "Sin separación ni etiquetas, los mensajes de clientes listos para comprar se pierden entre chats de proveedores, quejas o uso personal. El caos operativo se traduce en pérdida de dinero.",
+    action: "Adquiere una línea secundaria o usa WhatsApp Business exclusivamente para clientes. Implementa etiquetas visuales de prioridad."
+  },
+  { 
+    num: "03", 
+    title: "No usas etiquetas para clasificar", 
+    desc: "Cada vez que abres WhatsApp empiezas desde cero. Al no saber quién preguntó ayer, quién está listo para pagar o quién es cliente VIP, pierdes oportunidades de oro para cerrar ventas.",
+    action: "Crea un embudo básico con etiquetas: 'Nuevo lead', 'En seguimiento', 'Por pagar' y 'Pagado'. Revisa las pendientes cada mañana."
+  },
+  { 
+    num: "04", 
+    title: "Respondes cuando puedes, sin horarios", 
+    desc: "En internet, el tiempo es dinero. El 78% de los compradores elige a la primera tienda que le responde, sin importar si no es la más barata. La velocidad cierra más ventas que el precio.",
+    action: "Activa respuestas rápidas o automatiza el primer saludo con expectativas de tiempo de espera para ganar tiempo mientras te conectas."
+  },
+  { 
+    num: "05", 
+    title: "Chats abandonados sin seguimiento", 
+    desc: "Un cliente que deja de responder no es un no definitivo. Sin embargo, cada chat sin seguimiento después de 48h es una venta que muy probablemente le acabas de regalar a tu competencia.",
+    action: "Fija un bloque de 20 minutos diarios estrictamente dedicado a hacer retargeting o enviar un mensaje amigable a chats que no cerraron ayer."
+  }
+];
+---
+
+<section class="interactive-signals">
+  <div class="signals-container">
+    
+    <div class="signals-header">
+      <span class="eyebrow">EL DIAGNÓSTICO</span>
+      <h2 class="title">Las 5 señales que le cuestan dinero real a tu tienda</h2>
+    </div>
+
+    <div class="signals-layout">
+      <!-- ── Columna Izquierda: Pestañas ── -->
+      <div class="signals-tabs">
+        {signals.map((signal, index) => (
+          <button class={`signal-tab ${index === 0 ? 'active' : ''}`} data-index={index}>
+            <span class="tab-num">{signal.num}</span>
+            <span class="tab-title">{signal.title}</span>
+            <svg class="tab-icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        ))}
+      </div>
+
+      <!-- ── Columna Derecha: Contenido Detallado ── -->
+      <div class="signals-content-panel">
+        {signals.map((signal, index) => (
+          <div class={`signal-detail ${index === 0 ? 'active' : ''}`} id={`detail-${index}`}>
+            
+            <!-- Avatar / Lottie (Sobresale por arriba) -->
+            <div class="detail-avatar">
+              <!-- Usamos un placeholder 3D/Ilustración. Aquí puedes poner tu Lottie o imagen final -->
+              <img src={`https://api.dicebear.com/7.x/notionists/svg?seed=${index + 5}&backgroundColor=transparent`} alt="Ilustración" />
+            </div>
+
+            <!-- Número Superior Derecho -->
+            <div class="detail-top-number">
+              {signal.num}
+            </div>
+
+            <div class="detail-content">
+              <!-- Tag estilo "Escuela de..." -->
+              <div class="detail-tag">
+                <span class="tag-icon">
+                  <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                </span>
+                Impacto Crítico
+              </div>
+
+              <h3 class="detail-title">{signal.title}</h3>
+              <p class="detail-desc">{signal.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style is:global>
+  .interactive-signals {
+    padding: 7rem 1.5rem;
+    position: relative;
+    /* Fondo transparente para heredar el oscuro global */
+  }
+
+  .signals-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ── Header ── */
+  .signals-header {
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 4rem auto;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--font-body);
+    color: var(--coral);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    background: rgba(255, 107, 91, 0.1);
+    padding: 6px 16px;
+    border-radius: 999px;
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--text-light);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .subtitle {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--violet-bright);
+    line-height: 1.6;
+  }
+
+  /* ── Layout Principal ── */
+  .signals-layout {
+    display: flex;
+    gap: 3rem;
+    align-items: stretch;
+  }
+
+  /* ── Pestañas (Izquierda) ── */
+  .signals-tabs {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .signal-tab {
+    background: rgba(28, 6, 71, 0.5); /* Violeta oscuro sutil */
+    border: 1px solid rgba(169, 110, 255, 0.15);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: var(--violet-bright);
+  }
+
+  .signal-tab:hover {
+    background: rgba(28, 6, 71, 0.8);
+    border-color: rgba(169, 110, 255, 0.4);
+    transform: translateX(5px);
+  }
+
+  .signal-tab.active {
+    background: var(--violet-dark);
+    border-color: var(--coral);
+    color: var(--text-light);
+    transform: translateX(10px); /* Resalta saliendi un poco hacia la derecha */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2), inset 4px 0 0 var(--coral);
+  }
+
+  .tab-num {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: inherit;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+  }
+
+  .signal-tab.active .tab-num {
+    color: var(--coral);
+    opacity: 1;
+  }
+
+  .tab-title {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    flex-grow: 1;
+    line-height: 1.3;
+  }
+
+  .tab-icon {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+    color: var(--coral);
+  }
+
+  .signal-tab.active .tab-icon {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* ── Panel de Contenido (Derecha) ── */
+  .signals-content-panel {
+    flex: 1.2;
+    background: var(--violet-dark);
+    border: 1px solid rgba(169, 110, 255, 0.2);
+    border-radius: var(--radius-lg);
+    position: relative;
+    display: grid; /* El grid permite solapar elementos manteniendo la altura del más alto */
+  }
+
+  .signal-detail {
+    grid-area: 1 / 1;
+    padding: 5rem 3rem 3rem 3rem; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .signal-detail.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    z-index: 2;
+  }
+
+  /* ── Elementos visuales estilo referencia ── */
+  .detail-avatar {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 140px;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .detail-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+  }
+
+  .detail-top-number {
+    position: absolute;
+    top: -25px;
+    right: 30px;
+    background: var(--coral);
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 800;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3), inset 0 -3px 0 rgba(0,0,0,0.15);
+    z-index: 3;
+    border: 4px solid var(--violet-dark);
+  }
+
+  .detail-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 107, 91, 0.15);
+    color: var(--coral);
+    padding: 6px 14px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 107, 91, 0.3);
+  }
+
+  .tag-icon {
+    display: flex;
+    align-items: center;
+  }
+
+  .detail-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .detail-title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-light);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    text-wrap: balance;
+  }
+
+  .detail-desc {
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    color: var(--violet-soft);
+    line-height: 1.7;
+    margin: 0;
+    opacity: 0.9;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .interactive-signals {
+      padding: 4rem 1rem;
+    }
+
+    .signals-header {
+      margin-bottom: 2rem;
+    }
+
+    .title {
+      font-size: 1.8rem;
+      line-height: 1.2;
+    }
+
+    .signals-layout {
+      flex-direction: column-reverse; /* Contenido arriba, Tabs abajo */
+      gap: 2rem;
+    }
+
+    .signals-content-panel {
+      margin-top: 2.5rem;
+      min-height: 320px; /* Reducido para mayor compacidad */
+    }
+
+    .signal-detail {
+      padding: 4.5rem 1.2rem 1.5rem 1.2rem; /* Paddings reducidos */
+    }
+
+    /* Pestañas horizontales en móvil */
+    .signals-tabs {
+      flex-direction: row;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.5rem;
+      overflow-x: auto;
+      margin-top: -0.5rem; /* Acerca las pestañas al contenido */
+    }
+
+    .signal-tab {
+      flex: 0 0 auto;
+      padding: 0;
+      width: 44px;
+      height: 44px;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(28, 6, 71, 0.5);
+      border: 1px solid rgba(169, 110, 255, 0.15);
+      color: var(--violet-bright);
+    }
+
+    .tab-title, .tab-icon {
+      display: none !important; /* Forzamos ocultación del texto */
+    }
+
+    .tab-num {
+      font-size: 1.1rem;
+      opacity: 1;
+    }
+
+    .signal-tab.active {
+      transform: scale(1.1);
+      border-color: var(--coral);
+      background: var(--coral);
+      color: #fff;
+    }
+
+    .signal-tab.active .tab-num {
+      color: #fff;
+    }
+
+    .detail-avatar {
+      width: 90px; /* Reducido para ganar espacio vertical */
+      height: 90px;
+      top: -45px;
+    }
+
+    .detail-title {
+      font-size: 1.4rem; /* Un poco más pequeño */
+      margin-bottom: 0.5rem;
+    }
+
+    .detail-desc {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  }
+</style>
+
+<script>
+  // Script para manejar los clics en las pestañas y el auto-play
+  const initTabs = () => {
+    const tabs = document.querySelectorAll('.signal-tab');
+    const details = document.querySelectorAll('.signal-detail');
+    let currentIndex = 0;
+    let autoPlayInterval: any;
+
+    if (!tabs.length) return;
+
+    const showSignal = (index: number) => {
+      tabs.forEach(t => t.classList.remove('active'));
+      details.forEach(d => d.classList.remove('active'));
+      
+      tabs[index].classList.add('active');
+      const targetDetail = document.getElementById(`detail-${index}`);
+      if (targetDetail) {
+        targetDetail.classList.add('active');
+      }
+      currentIndex = index;
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => {
+        showSignal(index);
+        resetAutoPlay(); // Reinicia el tiempo si el usuario hace clic
+      });
+    });
+
+    const startAutoPlay = () => {
+      autoPlayInterval = setInterval(() => {
+        let nextIndex = (currentIndex + 1) % tabs.length;
+        showSignal(nextIndex);
+      }, 3000); // 3 segundos
+    };
+
+    const resetAutoPlay = () => {
+      clearInterval(autoPlayInterval);
+      startAutoPlay();
+    };
+
+    // Usar IntersectionObserver para iniciar auto-play solo cuando sea visible
+    const section = document.querySelector('.interactive-signals');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          startAutoPlay();
+        } else {
+          clearInterval(autoPlayInterval);
+        }
+      });
+    }, { threshold: 0.5 }); // Inicia cuando el 50% de la sección es visible
+
+    if (section) observer.observe(section);
+  };
+
+  document.addEventListener('DOMContentLoaded', initTabs);
+  document.addEventListener('astro:page-load', initTabs);
+</script>
