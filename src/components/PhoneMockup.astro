@@ -115,6 +115,11 @@
     justify-content: center;
     width: 100%;
     height: 100%;
+    /* Evita la selección de texto para que parezca una imagen real */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
   }
 
   .phone-wrapper {
@@ -383,22 +388,25 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    background: rgba(28, 6, 71, 0.85);
-    border: 1px solid rgba(255, 107, 91, 0.4);
+    background: rgba(28, 6, 71, 0.9); /* Un poco más opaco para evitar transparencias raras */
+    border: 1px solid rgba(255, 107, 91, 0.5);
     color: var(--coral);
     font-family: var(--font-body);
     font-weight: 700;
     font-size: 0.8rem;
     padding: 10px 16px;
     border-radius: 12px;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
     pointer-events: none;
     transform-style: preserve-3d;
-    z-index: 10;
+    z-index: 100; /* Forzamos que siempre esté al frente */
     white-space: nowrap;
-    opacity: 0; /* Inician ocultos para la animación */
+    opacity: 0;
+    will-change: transform, opacity; /* Ayuda al GPU del celular */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   /* Posiciones alejadas del chat y animaciones secuenciales */

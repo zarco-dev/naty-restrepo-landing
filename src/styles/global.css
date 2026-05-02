@@ -210,7 +210,7 @@ body.menu-open {
   top: 0;
   right: -100vw;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh; /* Usa Dynamic Viewport Height para evitar que las barras del navegador tapen el menú */
   background: transparent; /* Eliminado el fondo del overlay para total transparencia */
   z-index: 2000;
   transition: right 0.5s cubic-bezier(0.85, 0, 0.15, 1);
